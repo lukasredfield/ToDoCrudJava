@@ -4,7 +4,7 @@ package com.lukasredfield.rest.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(schema = "TareasCrud")
+@Table(name = "tareas")
 public class Tarea {
 
     @Id

@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class TodoController {
 
-    @Autowired
+    @Autowired                                 //TE INSTANCIA EL REPOSITORIO DENTRO DE LA CLASE
     private TodoRepository todoRepository;
     @GetMapping(value = "/")
     public String holamundo(){
@@ -19,13 +19,14 @@ public class TodoController {
 
     @GetMapping(value= "/tareas")
     public List<Tarea> getTareas(){
+
         return todoRepository.findAll();
     }
 
     @PostMapping(value="/guardartarea")
     public String guardarTarea(@RequestBody Tarea tarea){
         todoRepository.save(tarea);
-        return "Saved task";
+        return "Tarea guardada";
     }
 
     @PutMapping(value="/update/{id}")
