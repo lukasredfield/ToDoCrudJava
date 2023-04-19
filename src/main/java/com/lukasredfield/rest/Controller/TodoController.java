@@ -41,8 +41,12 @@ public class TodoController {
     @DeleteMapping(value="borrar/{id}")
     public String borrarTarea(@PathVariable long id){
         Tarea borrarTarea = todoRepository.findById(id).get();
-        todoRepository.delete(borrarTarea);
-        return "Tarea borrada";
+        if (borrarTarea.getId() <= 3){
+            return "No se puede borrar este usuario";
+        }else {
+            todoRepository.delete(borrarTarea);
+            return "Tarea borrada";
+        }
     }
 
 
