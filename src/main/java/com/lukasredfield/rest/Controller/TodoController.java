@@ -3,18 +3,23 @@ package com.lukasredfield.rest.Controller;
 import com.lukasredfield.rest.Model.Tarea;
 import com.lukasredfield.rest.Repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class TodoController {
-
     @Autowired                                 //TE INSTANCIA EL REPOSITORIO DENTRO DE LA CLASE
     private TodoRepository todoRepository;
-    @GetMapping(value = "/")
-    public String holamundo(){
-        return "Hola Mundo!";
+
+    @Controller
+    public class HomeController {
+
+        @RequestMapping("/")
+        public String home() {
+            return "redirect:/swagger-ui/index.html";
+        }
     }
 
     @GetMapping(value= "/tareas")
@@ -49,8 +54,6 @@ public class TodoController {
         }
     }
 
-
-
 }
 
-//
+
